@@ -1,27 +1,15 @@
 
 
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+package com.github.maven.example;
 
-/**
- * This class is used to Initialize Dispatcher Servlet
- * @author Ashok
- *
- */
-public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 
-	@Override
-	protected Class<?>[] getRootConfigClasses() {
-		return new Class[] { AppConfiguration.class };
-	}
-
-	@Override
-	protected Class<?>[] getServletConfigClasses() {
-		return null;
-	}
-
-	@Override
-	protected String[] getServletMappings() {
-		return new String[] { "/rest/*" };
-	}
-
+@WebServlet(urlPatterns = "/sample", loadOnStartup = 1)
+public class HelloServlet extends HttpServlet {
+    @Override
+    public void init() throws ServletException {
+        System.out.println("HelloServlet: You should see this in the Instance Logs :-)");
+    }
 }
