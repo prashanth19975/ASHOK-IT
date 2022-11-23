@@ -1,18 +1,15 @@
 
 
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+package com.github.maven.example;
 
-/**
- * This class is used to perform Component Scanning with given package
- * @author Ashok
- * 
- *
- */
-@Configuration
-@EnableWebMvc
-@ComponentScan(basePackages = "com.app.*")
-public class AppConfiguration {
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 
+@WebServlet(urlPatterns = "/sample", loadOnStartup = 1)
+public class HelloServlet extends HttpServlet {
+    @Override
+    public void init() throws ServletException {
+        System.out.println("HelloServlet: You should see this in the Instance Logs :-)");
+    }
 }
